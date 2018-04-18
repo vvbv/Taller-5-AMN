@@ -2,6 +2,7 @@
 #define MAIN_HPP_
 
 #include <iostream>
+#include "../src/metodos.cpp"
 
     class Main{
         public:
