@@ -11,6 +11,10 @@ double Mathematica::norma(double *y){
 	return norma_y;
 };
 
+double Mathematica::norm_2(double y[3]){
+	return sqrt( pow(y[0], 2) + pow(y[1], 2) + pow(y[2], 2) );
+};
+
 void Mathematica::matrixVectorProduct(int n, int matrix[][3],double  *x,double *y){
     for(int i=0;i<n;i++){
 			y[i]= ( matrix[i][0]*x[0] )+(matrix[i][1]*x[1])+(matrix[i][2]*x[2]);

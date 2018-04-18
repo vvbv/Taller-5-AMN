@@ -2,6 +2,7 @@
 #define METODOS_HPP_
 
 #include "../src/mathematica.cpp"
+#include <iomanip>
 
 using namespace std; 
 
@@ -13,7 +14,7 @@ class Metodos{
         Metodos();
         ~Metodos();
         int powerMethod(int n, int matrix[3][3], double *x, int iteraciones, double *y);
-        void inverse_power_method( int n, double matrix_L[3][3], double matrix_U[3][3], double x[3], int M  );
+        void inverse_power_method( double matrix_L[3][3], double matrix_U[3][3], double x[3], int iterations  );
 
 };
 

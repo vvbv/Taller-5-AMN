@@ -31,18 +31,30 @@ int Metodos::powerMethod(int n, int matrix[3][3], double *x, int iteraciones, do
 	return r;
 };
 
-void Metodos::inverse_power_method( int n, double matrix_L[3][3], double matrix_U[3][3], double x[3], int M  ){
+void Metodos::inverse_power_method( double matrix_L[3][3], double matrix_U[3][3], double x[3], int iterations  ){
 
-    //cout << 0 << " => [" << x[0] << ", " << x[1] << ", " << x[2] << "]" << endl;
+    cout << 0 << " => [" << x[0] << ", " << x[1] << ", " << x[2] << "]" << endl;
 
     double *y;
-    y = this->mathematica.matrix_x_vector( matrix_L, x );
-    //y = this->mathematica.solve_triangular_system( matrix_L, x );
-    cout << 0 << " => [" << y[0] << ", " << y[1] << ", " << y[2] << "]" << endl;
-    /*for( int i = 0; i < M, i++ ){
+    double *x_ = x;
+    for( int i = 0; i < iterations; i++ ){
 
+        // Resolution between Lz = x
+        double *z = this->mathematica.solve_triangular_system( matrix_L, x_ );
+        // Resolution between Uy = z
+        y = this->mathematica.solve_triangular_system( matrix_U, z );
 
+        double r = y[0] / (double) x_[0];
+        x_[0] = y[0] / (double) this->mathematica.norm_2( y );
+        x_[1] = y[1] / (double) this->mathematica.norm_2( y );
+        x_[2] = y[2] / (double) this->mathematica.norm_2( y );
 
-    }*/
+        cout << i << " => [" 
+             << setprecision(24) << x[0] << ", " 
+             << setprecision(24) << x[1] << ", " 
+             << setprecision(24) << x[2] << "]" << " R: " 
+             << setprecision(24) << r << endl;
+
+    }
 
 };
