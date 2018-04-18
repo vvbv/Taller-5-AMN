@@ -1,6 +1,7 @@
 #include "../include/main.hpp"
 
 int main( int argc, const char* argv[] ){
+    
     Metodos metodos;
 
     int n = 3;
@@ -14,6 +15,6 @@ int main( int argc, const char* argv[] ){
 
 	cout << endl;
 	cout << "Ultimo r: " << metodos.powerMethod(n,matrix,x,iteraciones,y) << endl;
-    
+
     return 0;
 }
