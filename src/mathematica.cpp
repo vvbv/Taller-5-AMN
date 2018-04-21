@@ -100,7 +100,7 @@ double* Mathematica::solveTriangularMatrix(double **matrix, double b[3]){
     double *x= new double[3];
     double suma;
     int n=3;
-    cout << "que tipo de matrix es " << endl;
+    cout << "que tipo de matriz es " << endl;
     if(matrix[0][2] == 0){
         cout << "triangular inferior" << endl;
         for(int i=0;i<n;i++){
