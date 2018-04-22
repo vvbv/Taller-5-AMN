@@ -20,7 +20,7 @@ class Mathematica{
         void print_matrix( double matrix[3][3] );
         double* factorSolveLU( double matrix[3][3], double x[3] );
         void factorLU(double matrix[3][3],double **matrix_L,double **matrix_U,int n);
-        double* solveTriangularMatrix(double **matrix, double b[3]);
+        double* solveTriangularMatrix(double **matrix, double *b);
  
 };
 

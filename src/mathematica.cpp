@@ -42,8 +42,6 @@ double* Mathematica::solve_triangular_system( double matrix[3][3], double b[3] )
         x[0] = ( b[0] ) / (double) matrix[0][0];
         x[1] = ( b[1] - ( matrix[1][0] * (double) x[0] ) ) /  (double) matrix[1][1];
         x[2] = ( b[2] - ( matrix[2][0] * (double) x[0] ) - ( matrix[2][1] * x[1] ) ) / (double) matrix[2][2];
-        for(int i=0;i<3;i++){
-        }
     }else{
         x[2] = ( b[2] ) / (double) matrix[2][2];
         x[1] = ( b[1] - ( matrix[1][2] * (double) x[2] ) ) /  (double) matrix[1][1];
@@ -91,42 +89,39 @@ void Mathematica::factorLU(double matrix[3][3],double **matrix_L,double **matrix
     }
 };
 
-double* Mathematica::solveTriangularMatrix(double **matrix, double b[3]){
+
+double* Mathematica::solveTriangularMatrix(double **matrix, double *b){
     //si el elemento en la esquina superior derecha es cero es triangular inferior (tomando un elemento en la parte triangular superior)
     double *x= new double[3];
     double suma;
     int n=3;
-    cout << "que tipo de matriz es " << endl;
     if(matrix[0][2] == 0){
-        cout << "triangular inferior" << endl;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<3;i++){
             suma=0;
             for(int j=0;j<i;j++){
                 suma = suma + (matrix[i][j]*x[j]);
             }
             x[i] = (b[i] - suma)/matrix[i][i];
         }
+
+        return x;
     }
     else{
         //si el elemento en la esquina inferior izq es cera es triangular superior
         if(matrix[2][0] == 0){
-            cout << "triangular superior" << endl;
-            for(int i=n-1;i>-1;i--){
-                suma = 0;
-                for(int j=i+1;j<n;j++){
+            for(int i=2;i>-1;i--){
+                suma=0;
+                for(int j=i;j<3;j++){
                     suma = suma + (matrix[i][j]*x[j]);
                 }
-                x[i]=(b[i]-suma)/matrix[i][i];
-
+                x[i] = (b[i] - suma)/matrix[i][i];
             }
-            /*for(int i=0;i<3;i++){
-                cout << "mal" << endl;
-                cout << x[i] << endl;
-            }*/
+
+            return x;
         }
     }
-    return x;
-}
+    
+};
 
 
 
@@ -142,16 +137,27 @@ double* Mathematica::factorSolveLU( double matrix[3][3], double x[3] ){
         matrix_L[i]=new double[n];
         matrix_U[i]=new double[n];            
     }
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            matrix_L[i][j] = 0.0;
+            matrix_U[i][j] = 0.0;
+        }
+    }
     for(int i=0;i<n;i++){
         matrix_U[i][i]=1.0;
         matrix_L[i][i]=1.0; 
     }
     factorLU(matrix,matrix_L,matrix_U,3);
+
+
     //resolver lu
     // Resolution between Lz = x
-    z = solveTriangularMatrix( matrix_L, x_ );
+    z = solveTriangularMatrix(matrix_L,x_);
+
 
     // Resolution between Uy = z
-    y = solveTriangularMatrix( matrix_U, z );
+    y = solveTriangularMatrix(matrix_U, z);
+
+
     return y;
 };
