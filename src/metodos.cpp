@@ -3,7 +3,7 @@
 Metodos::Metodos(){};
 Metodos::~Metodos(){};
 
-int Metodos::powerMethod(int n, int matrix[3][3], double *x, int iteraciones, double *y){
+double Metodos::powerMethod(int n, int matrix[3][3], double *x, int iteraciones, double *y){
 
     double r=0;
 	double norma_y = 0;
@@ -19,24 +19,29 @@ int Metodos::powerMethod(int n, int matrix[3][3], double *x, int iteraciones, do
 			x[i] = y[i] / this->mathematica.norma( y );
 		}
 		//impresion
-		cout << endl;
-		cout << "Iteracion:" << k << endl;
-		cout << "Residuo: " << r << endl;
-		cout << "x("<<k<<"): ";
+		
+		cout << "Ite: " << k << " => [";
+
 		for(int i=0;i<n;i++){
-			cout << setprecision(10) << x[i] << " ";
+			cout << setprecision(10) << x[i];
+            if(i != (n-1)){
+                cout << ", ";
+            }else{
+                cout << "]" << " R: " 
+                     << setprecision(24) << r << endl;
+            }
 		}
-		cout << endl;
 	}
 	return r;
 };
 
-void Metodos::inverse_power_method( double matrix_L[3][3], double matrix_U[3][3], double x[3], int iterations  ){
+double Metodos::inverse_power_method( double matrix_L[3][3], double matrix_U[3][3], double x[3], int iterations  ){
 
     cout << 0 << " => [" << x[0] << ", " << x[1] << ", " << x[2] << "]" << endl;
 
     double *y;
     double *x_=x;
+    double last_residue = 0;
     for( int i = 0; i < iterations; i++ ){
 
         // Resolution between Lz = x
@@ -47,13 +52,15 @@ void Metodos::inverse_power_method( double matrix_L[3][3], double matrix_U[3][3]
         x_[0] = y[0] / (double) this->mathematica.norma( y );
         x_[1] = y[1] / (double) this->mathematica.norma( y );
         x_[2] = y[2] / (double) this->mathematica.norma( y );
-        cout << "metodo1" << endl;
-        cout << i << " => [" 
+        cout << "Ite: " << (i + 1) << " => [" 
              << setprecision(24) << x[0] << ", " 
              << setprecision(24) << x[1] << ", " 
              << setprecision(24) << x[2] << "]" << " R: " 
              << setprecision(24) << r << endl;
+        last_residue = r;
     }
+
+    return last_residue;
 
 };
 

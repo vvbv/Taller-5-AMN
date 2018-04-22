@@ -11,9 +11,9 @@ double Mathematica::norma(double *y){
 	return norma_y;
 };
 
-// double Mathematica::norm_2(double y[3]){
-// 	return sqrt( pow(y[0], 2) + pow(y[1], 2) + pow(y[2], 2) );
-// };
+ double Mathematica::norm_2(double y[3]){
+ 	return sqrt( pow(y[0], 2) + pow(y[1], 2) + pow(y[2], 2) );
+};
 
 void Mathematica::matrixVectorProduct(int n, int matrix[][3],double  *x,double *y){
     for(int i=0;i<n;i++){
@@ -21,15 +21,15 @@ void Mathematica::matrixVectorProduct(int n, int matrix[][3],double  *x,double *
 	}
 };
 
-// double* Mathematica::matrix_x_vector(double matrix[3][3], double x[3]){
-//     double *y = new double[ 3 ];
-//     for( int i = 0; i < 3; i++ ){
-//         for( int j = 0; j < 3; j++ ){
-//             y[ i ] = y[ i ] + matrix[ i ][ j ] * (double) x[j];
-//         }
-//     }
-//     return y;
-// };
+ double* Mathematica::matrix_x_vector(double matrix[3][3], double x[3]){
+    double *y = new double[ 3 ];
+    for( int i = 0; i < 3; i++ ){
+        for( int j = 0; j < 3; j++ ){
+            y[ i ] = y[ i ] + matrix[ i ][ j ] * (double) x[j];
+        }
+    }
+    return y;
+};
 
 double* Mathematica::solve_triangular_system( double matrix[3][3], double b[3] ){
     bool is_lower_triangular = true;
@@ -48,10 +48,6 @@ double* Mathematica::solve_triangular_system( double matrix[3][3], double b[3] )
         x[2] = ( b[2] ) / (double) matrix[2][2];
         x[1] = ( b[1] - ( matrix[1][2] * (double) x[2] ) ) /  (double) matrix[1][1];
         x[0] = ( b[0] - ( matrix[0][2] * (double) x[2] ) - ( matrix[0][1] * (double) x[1] ) ) / (double) matrix[0][0];
-        for(int i=0;i<3;i++){
-            cout << "bien" << endl;
-            cout << x[i] << endl;
-        }
     }
 
     return x;
@@ -123,10 +119,10 @@ double* Mathematica::solveTriangularMatrix(double **matrix, double b[3]){
                 x[i]=(b[i]-suma)/matrix[i][i];
 
             }
-            for(int i=0;i<3;i++){
+            /*for(int i=0;i<3;i++){
                 cout << "mal" << endl;
                 cout << x[i] << endl;
-            }
+            }*/
         }
     }
     return x;
