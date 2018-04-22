@@ -5,9 +5,9 @@ int main( int argc, const char* argv[] ){
     Metodos metodos;
     string option = "";
     cout << "\n   Opciones:\n" << endl;
-    cout << "       1: 13 [ power_method (1,2,3)T ]" << endl;
-    cout << "       2: 26(a) [ power_method (-1,1,1)T ]" << endl;
-    cout << "       3: 27(a) [ inverse_power_method ]\n" << endl;
+    cout << "       1: 13 [ power_method (1,2,3)T ], 200 Iteraciones" << endl;
+    cout << "       2: 26(a) [ power_method (-1,1,1)T ], 28 Iteraciones" << endl;
+    cout << "       3: 27(a) [ inverse_power_method ], 25 Iteraciones\n" << endl;
     cout << "Selección: ";
     getline (cin, option);;
      
