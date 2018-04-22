@@ -34,7 +34,7 @@ int main( int argc, const char* argv[] ){
     }else if( option == "3" ){ 
             double matrix[3][3] = {{6,5,-5},{2,6,-2},{2,5,-1}};
             double *x= new double[3];
-            int iteraciones = 25;//////////////////////
+            int iteraciones = 25;
             x[0]=3;
             x[1]=7;
             x[2]=-13;
