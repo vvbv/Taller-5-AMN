@@ -19,7 +19,7 @@ int main( int argc, const char* argv[] ){
             x[1]=2;
             x[2]=3;
             cout << endl;
-            cout << "Ultimo r: " << metodos.powerMethod(n,matrix,x,iteraciones,y) << endl;
+            cout << "\n     último r: " << metodos.powerMethod(n,matrix,x,iteraciones,y) << endl;
 
     }else if( option == "2" ){
 
@@ -40,8 +40,8 @@ int main( int argc, const char* argv[] ){
             x[2]=-13;
             double matrix_L[3][3] = {{1, 0, 0},{(1/(double)3), 1, 0},{(1/(double)3), (10/(double)13), 1}}; 
             double matrix_U[3][3] = {{6, 5, -5},{0, (13/(double)3), (-1/(double)3)},{0, 0, (12/(double)13)}}; 
-            cout << "\n     último r: " << metodos.inverse_power_method( matrix_L, matrix_U, x, iteraciones ) << "\n" << endl;
-            cout << "\n     (2)último r: " << metodos.inverse_power_method2( matrix, x, iteraciones ) << "\n" << endl;
+            //cout << "\n     último r: " << metodos.inverse_power_method( matrix_L, matrix_U, x, iteraciones ) << "\n" << endl;
+            cout << "\n     último r: " << metodos.inverse_power_method2( matrix, x, iteraciones ) << "\n" << endl;
 
     }
 
