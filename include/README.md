@@ -13,7 +13,7 @@
 > $ chmod 777 build_run.sh<br>
 > $ sh build_run.sh
 
-### Windows
+### Windows:
 
 Comando equivalente con mingw a:
 > $ g++ --std=c++11 src/main.cpp -o build/main.exe<br>
